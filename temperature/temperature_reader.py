@@ -11,22 +11,22 @@ interval = 5
 def register():
     payload = {'name': name, 'sensorType': sensorType, 'gpio': gpio}
     r = requests.post("http://localhost:3000/register", params=payload)
-    print(r)
-    startReading()
-
+    if r.status_code == requests.codes.ok:
+        print("Registered")
+        startReading()
+    else:
+        r.raise_for_status()
 def read():
     return DHT.read_retry(DHT.DHT11, 26)
 
 def prepareResult():
-    t = read()[1]
-    h = read()[0]
+#     t = read()[1]
+#     h = read()[0]
     x = 0
     readList = []
     while x < 3:
-        print("petla")
-        readList.append({'temperature':self.read()[1],'humidity':self.read()[0]})
+        readList.append({'temperature':read()[1],'humidity':read()[0]})
         x += 1
-        print(x)
     print ("wyjscie")
     temperature = sum(item['temperature'] for item in readList)/len(readList)
     humidity = sum(item['humidity'] for item in readList)/len(readList)
