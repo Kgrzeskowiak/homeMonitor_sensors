@@ -3,7 +3,10 @@
 
 import paho.mqtt.client as mqtt
 import time  # Can never get enough...
+import datetime
+import json
 
+now = datetime.datetime.now()
 MQTT_HOST = "192.168.1.9" 
 MQTT_PORT = 1883
 client_id = "node1"
@@ -33,9 +36,13 @@ client.connect(MQTT_HOST, MQTT_PORT, 60)
 # manual interface.
 client.loop_start()
 index = 0
-temperature = 11
-humidty = 22
-message = "Temperature:" + str(temperature) + "Humdity:" + str(humidty)
+valueList = {
+  "temperature": 10,
+  "humidity": 30,
+  "date": now.strftime("%Y-%m-%d %H:%M"),
+  "id": client_id
+}
+message = json.dumps(valueList)
 while True:
     index = index + 1
     time.sleep(5)
