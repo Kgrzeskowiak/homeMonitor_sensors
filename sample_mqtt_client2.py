@@ -9,7 +9,7 @@ import json
 now = datetime.datetime.now()
 MQTT_HOST = "192.168.1.9"
 MQTT_PORT = 1883
-client_id = "Temperatura gora"
+client_id = "node2"
 
 register = {
   "id" : client_id,
@@ -41,7 +41,7 @@ client.connect(MQTT_HOST, MQTT_PORT, 60)
 client.loop_start()
 index = 0
 reading = {
-  "temperature": 15,
+  "temperature": 10,
   "humidity": 30,
   "date": now.strftime("%Y-%m-%d %H:%M"),
   "id": client_id
