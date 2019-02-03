@@ -3449,3 +3449,5 @@ venv/Lib/site-packages/astroid-2.1.0.dist-info/DESCRIPTION.rst
 venv/Lib/site-packages/_ast3.cp36-win32.pyd
 venv/Lib/site-packages/_ast27.cp36-win32.pyd
 venv/Lib/site-packages/__pycache__/mccabe.cpython-36.pyc
+.vscode/arduino.json
+.vscode/c_cpp_properties.json
